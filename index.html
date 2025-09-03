@@ -106,6 +106,23 @@
         <a href="#fitur">Pendakian</a>
         <a href="#galeri">Galeri</a>
         <a href="#kontak">Kontak</a>
+        <button id="darkToggle" class="btn">🌙/☀️</button>
+
+<script>
+  const toggle = document.getElementById("darkToggle");
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("light");
+  });
+</script>
+
+<style>
+  body.light {
+    background: #f8fafc;
+    color: #111;
+  }
+  body.light .card { background: #fff; color: #111; }
+</style>
+
       </nav>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav">Menu</button>
     </div>
@@ -225,6 +242,7 @@
   </script>
 </body>
 </html>
+
 
 
 
