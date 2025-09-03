@@ -1,1 +1,230 @@
 # Web-GalangHafist
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Website Tes Galang</title>
+  <meta name="description" content="Website Tes Galang Hafist Prayoga." />
+  <link rel="icon" href="data:," />
+  <style>
+    /* ====== GAYA DASAR ====== */
+    :root {
+      --bg: #0f172a;        /* slate-900 */
+      --card: #111827;      /* gray-900 */
+      --muted: #94a3b8;     /* slate-400 */
+      --text: #e5e7eb;      /* gray-200 */
+      --accent: #22c55e;    /* green-500 */
+      --accent-2: #60a5fa;  /* blue-400 */
+      --ring: rgba(96,165,250,.4);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1000px 600px at 20% -10%, rgba(96,165,250,.15), transparent),
+                  radial-gradient(800px 500px at 120% 10%, rgba(34,197,94,.12), transparent),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container { width: min(1120px, 92%); margin: 0 auto; }
+
+    /* ====== NAVBAR ====== */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(180%) blur(8px);
+      background: rgba(15,23,42,.6);
+      border-bottom: 1px solid rgba(148,163,184,.15);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { font-weight: 700; letter-spacing: .5px; }
+    .badge { padding: 4px 10px; border-radius: 999px; font-size: 12px; color: #0b1220; background: linear-gradient(90deg,var(--accent),var(--accent-2)); }
+    .links { display: flex; gap: 18px; }
+    .links a { opacity: .9; }
+    .links a:hover { opacity: 1; }
+    .menu-btn { display: none; border: 1px solid rgba(148,163,184,.25); padding: 6px 10px; border-radius: 10px; background: transparent; color: var(--text); }
+
+    @media (max-width: 720px) {
+      .links { display: none; }
+      .menu-btn { display: inline-flex; align-items: center; gap: 8px; }
+    }
+
+    /* ====== HERO ====== */
+    .hero { padding: 72px 0 48px; text-align: center; }
+    .title { font-size: clamp(28px, 5vw, 44px); line-height: 1.15; margin: 0 0 12px; }
+    .subtitle { color: var(--muted); font-size: clamp(14px, 2.2vw, 18px); margin-bottom: 28px; }
+    .cta { display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 12px; background: linear-gradient(90deg,var(--accent),var(--accent-2)); color: #0b1220; border: none; font-weight: 700; cursor: pointer; box-shadow: 0 8px 28px rgba(96,165,250,.25);
+    }
+
+    /* ====== SECTION ====== */
+    section { padding: 56px 0; }
+    .section-title { font-size: 24px; margin-bottom: 16px; }
+    .muted { color: var(--muted); }
+
+    /* ====== FEATURES GRID ====== */
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border: 1px solid rgba(148,163,184,.15); border-radius: 18px; padding: 18px; box-shadow: 0 10px 30px rgba(2,6,23,.2); }
+    .card h3 { margin-top: 0; }
+    .pill { display: inline-block; font-size: 12px; padding: 2px 10px; border-radius: 999px; background: rgba(96,165,250,.12); border: 1px solid rgba(96,165,250,.24); }
+
+    @media (max-width: 920px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 620px) { .grid { grid-template-columns: 1fr; } }
+
+    /* ====== GALLERY ====== */
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .gallery img { border-radius: 12px; border: 1px solid rgba(148,163,184,.2); }
+    @media (max-width: 720px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ====== FORM ====== */
+    form { background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015)); border: 1px solid rgba(148,163,184,.15); border-radius: 18px; padding: 18px; }
+    label { display: block; margin-bottom: 6px; font-weight: 600; }
+    input, textarea { width: 100%; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(148,163,184,.25); background: #0b1220; color: var(--text); outline: none; }
+    input:focus, textarea:focus { box-shadow: 0 0 0 4px var(--ring); border-color: var(--accent-2); }
+    .btn { margin-top: 10px; padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(148,163,184,.25); background: #0b1220; color: var(--text); cursor: pointer; }
+    .btn:hover { border-color: rgba(96,165,250,.45); }
+
+    /* ====== FOOTER ====== */
+    footer { border-top: 1px solid rgba(148,163,184,.15); padding: 28px 0; color: var(--muted); }
+
+    /* UTIL */
+    .row { display: flex; gap: 14px; flex-wrap: wrap; }
+    .spacer { height: 18px; }
+  </style>
+</head>
+<body>
+  <!-- ====== NAVBAR ====== -->
+  <header>
+    <div class="container nav">
+      <div class="brand">Website Galang <span class="badge">HTML</span></div>
+      <nav class="links" aria-label="navigasi utama">
+        <a href="#tentang">Tentang</a>
+        <a href="#fitur">Fitur</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav">Menu</button>
+    </div>
+  </header>
+
+  <!-- ====== HERO ====== -->
+  <section class="hero container">
+    <h1 class="title">Website Sederhana Galang</h1>
+    <h1 class="title">Untuk Belajar Dan Proyek kecil</h1>
+    <p class="subtitle">Struktur rapi, responsif, dan mudah diubah. Cocok untuk tugas kuliah, pengumuman event, atau portofolio singkat.</p>
+    <a class="cta" href="#fitur">Lihat Fitur</a>
+  </section>
+
+  <!-- ====== SECTION: TENTANG ====== -->
+  <section id="tentang">
+    <div class="container">
+      <h2 class="section-title">Tentang</h2>
+      <p class="muted">Nama saya Galang Hafist Prayoga, mahasiswa aktif di STMIK Triguna Dharma Medan, Program Studi Sistem Informasi, saat ini sedang menempuh pendidikan di semester 3. Saya memiliki minat dalam bidang teknologi informasi, khususnya pengembangan sistem dan pemrograman. Saat ini saya terus mengembangkan kemampuan akademik dan keterampilan praktis untuk mendukung karier saya di masa depan.
+
+Saya berdomisili di Jalan Karya Wisata, Komplek Johor Indah Permai 2, Blok H No.7. Untuk keperluan komunikasi, saya dapat dihubungi melalui email: <em>GalangHafistp@gmail.com</em> </p>
+      <div class="spacer"></div>
+      <div class="row">
+        <div class="pill">HTML5</div>
+        <div class="pill">CSS Grid</div>
+        <div class="pill">Aksesibilitas Dasar</div>
+        <div class="pill">Responsif</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SECTION: FITUR ====== -->
+  <section id="fitur">
+    <div class="container">
+      <h2 class="section-title">Fitur</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Struktur Semantik</h3>
+          <p>Memakai tag <code>&lt;header&gt;</code>, <code>&lt;section&gt;</code>, dan <code>&lt;footer&gt;</code> agar mudah dibaca dan di-SEO.</p>
+        </article>
+        <article class="card">
+          <h3>Layout Responsif</h3>
+          <p>Grid otomatis menyesuaikan kolom di layar kecil tanpa library tambahan.</p>
+        </article>
+        <article class="card">
+          <h3>Form Kontak</h3>
+          <p>Contoh form siap pakai (tanpa backend), bisa diarahkan ke <code>mailto:</code> atau layanan form.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SECTION: GALERI ====== -->
+  <section id="galeri">
+    <div class="container">
+      <h2 class="section-title">Galeri</h2>
+      <p class="muted">Ganti gambar berikut dengan gambar kamu sendiri (taruh di folder yang sama).</p>
+      <div class="gallery" aria-label="galeri gambar">
+        <img src="c:\Users\galan\Downloads\lang.jpg" alt="Contoh gambar 1" />
+        <img src="c:\Users\galan\Downloads\Lang2.jpg" alt="Contoh gambar 2" />
+        <img src="c:\Users\galan\Downloads\Lang3.jpg" alt="Contoh gambar 3" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SECTION: KONTAK ====== -->
+  <section id="kontak">
+    <div class="container">
+      <h2 class="section-title">Kontak</h2>
+      <form id="contactForm" aria-label="formulir kontak">
+        <div class="row">
+          <div style="flex:1; min-width: 240px;">
+            <label for="name">Nama</label>
+            <input id="name" name="name" placeholder="Nama lengkap" required />
+          </div>
+          <div style="flex:1; min-width: 240px;">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="nama@email.com" required />
+          </div>
+        </div>
+        <div class="spacer"></div>
+        <label for="message">Pesan</label>
+        <textarea id="message" name="message" rows="4" placeholder="Tulis pesan di sini..." required></textarea>
+        <button class="btn" type="submit">Kirim</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Website Sederhana Galang. Dibuat dengan HTML + CSS + JS.
+    </div>
+  </footer>
+
+  <script>
+    // ====== TAHUN OTOMATIS DI FOOTER ======
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ====== MENU MOBILE SEDERHANA ======
+    const menuBtn = document.getElementById('menuBtn');
+    const links = document.querySelector('.links');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = links.style.display === 'flex';
+      links.style.display = isOpen ? 'none' : 'flex';
+      links.style.flexDirection = 'column';
+      links.style.gap = '12px';
+      menuBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // ====== FORM: KIRIM VIA MAILTO ======
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const subject = encodeURIComponent(`Pesan dari ${name}`);
+      const body = encodeURIComponent(`Nama: ${name}\nEmail: ${email}\n\nPesan:\n${message}`);
+      window.location.href = `mailto:contoh@email.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
