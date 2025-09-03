@@ -237,18 +237,28 @@
     });
 
     // ====== FORM: KIRIM VIA MAILTO ======
-    document.getElementById('contactForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      const subject = encodeURIComponent(`Pesan dari ${name}`);
-      const body = encodeURIComponent(`Nama: ${name}\nEmail: ${email}\n\nPesan:\n${message}`);
-      window.location.href = `mailto:galanghafistp@gmail.com?subject=${subject}&body=${body}`;
-    });
+   document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  // isi pesan
+  const text = encodeURIComponent(
+    `Halo, saya ${name}\nEmail: ${email}\n\nPesan:\n${message}`
+  );
+
+  // ganti dengan nomor WA kamu (format internasional, tanpa 0)
+  const phoneNumber = "6281288017989";  
+
+  // alihkan ke WhatsApp
+  window.location.href = `https://wa.me/${phoneNumber}?text=${text}`;
+});
   </script>
 </body>
 </html>
+
 
 
 
