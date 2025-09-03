@@ -201,6 +201,29 @@
     box-shadow: 0 0 20px rgba(255,255,255,0.3);
   " />
 </div>
+  <script>
+  // ====== GALERI: LIGHTBOX ======
+  const galleryImages = document.querySelectorAll(".gallery img");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  // Klik gambar → tampilkan lightbox
+  galleryImages.forEach(img => {
+    img.addEventListener("click", () => {
+      lightbox.style.display = "flex";
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+    });
+  });
+
+  // Klik area gelap (bukan gambar) → tutup lightbox
+  lightbox.addEventListener("click", (e) => {
+    if (e.target !== lightboxImg) {
+      lightbox.style.display = "none";
+      lightboxImg.src = "";
+    }
+  });
+</script>
   <!-- ====== SECTION: KONTAK ====== -->
    <div class="container">
   <a class="cta" 
@@ -265,6 +288,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
   </script>
 </body>
 </html>
+
 
 
 
