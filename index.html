@@ -184,15 +184,31 @@
       </div>
     </div>
   </section>
-
-  <div class="container">
+  <!-- LIGHTBOX POPUP -->
+<div id="lightbox" style="
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+">
+  <img id="lightbox-img" src="" alt="Preview" style="
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+  " />
+</div>
+  <!-- ====== SECTION: KONTAK ====== -->
+   <div class="container">
   <a class="cta" 
    href="https://wa.me/6281288017989?text=Halo%20saya%20ingin%20bertanya" 
    target="_blank">
   Hubungi via WhatsApp
 </a>
   </div>
-  <!-- ====== SECTION: KONTAK ====== -->
   <section id="kontak">
     <div class="container">
       <h2 class="section-title">Kontak</h2>
@@ -249,6 +265,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
   </script>
 </body>
 </html>
+
 
 
 
