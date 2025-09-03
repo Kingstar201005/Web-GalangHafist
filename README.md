@@ -1,2 +1,1 @@
 # Web-GalangHafist
-# Nama saya Galang Hafist Prayoga, mahasiswa aktif di STMIK Triguna Dharma Medan, Program Studi Sistem Informasi, saat ini sedang menempuh pendidikan di semester 3. Saya memiliki minat dalam bidang teknologi informasi, khususnya pengembangan sistem dan pemrograman. Saat ini saya terus mengembangkan kemampuan akademik dan keterampilan praktis untuk mendukung karier saya di masa depan. Saya berdomisili di Jalan Karya Wisata, Komplek Johor Indah Permai 2, Blok H No.7. Untuk keperluan komunikasi, saya dapat dihubungi melalui email: GalangHafistp@gmail.com
